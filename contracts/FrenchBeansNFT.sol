@@ -8,16 +8,16 @@ contract FrenchBeans is ERC721 {
     Counters.Counter private _tokenIds;
 
     constructor() ERC721("FrenchBeans", "BEANS") public {
-        string memory URI = "https://ipfs.fleek.co/ipfs/bafybeia4xg542ak7kigujvrudq43dsku5o5wosnecdowimbbp6xixg773y";
-        _setBaseURI(URI);
     }
 
     function awardNFT(address recipient) public returns (uint256) {
         _tokenIds.increment();
 
+        string memory URI = "https://ipfs.fleek.co/ipfs/bafybeia4xg542ak7kigujvrudq43dsku5o5wosnecdowimbbp6xixg773y";
+
         uint256 newNftId = _tokenIds.current();
         _mint(recipient, newNftId);
-        _setTokenURI(newNftId, "");
+        _setTokenURI(newNftId, URI);
 
         return newNftId;
     }

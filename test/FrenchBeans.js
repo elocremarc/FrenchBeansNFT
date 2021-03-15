@@ -21,18 +21,18 @@ contract("FrenchBeans", (accounts) => {
     assert.equal(symbol, "BEANS");
   });
 
-  it("has correct base URI", async () => {
-    const Uri = await token.baseURI();
+  it("Mints NFTs", async () => {
+    account = accounts[0];
+    await token.awardNFT(account);
+    const owner = await token.ownerOf(1);
+    assert.equal(owner, accounts[0]);
+  });
+
+  it("Token has correct  URI", async () => {
+    const Uri = await token.tokenURI(1);
     assert.equal(
       Uri,
       "https://ipfs.fleek.co/ipfs/bafybeia4xg542ak7kigujvrudq43dsku5o5wosnecdowimbbp6xixg773y"
     );
-  });
-  it("Mints NFTs", async () => {
-    account = accounts[0];
-    await token.awardNFT(account);
-
-    const owner = await token.ownerOf(1);
-    assert.equal(owner, accounts[0]);
   });
 });
