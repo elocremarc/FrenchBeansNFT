@@ -1,5 +1,5 @@
 
-# Eloc Token
+#Frech Beans NFT
 
 Open Zeppelin ERC-721 contract with award function and unit tests.
 Deployed with truffle to the Kovan testnet:
